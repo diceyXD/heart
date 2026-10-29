@@ -1,0 +1,50 @@
+{
+  "source_data_path": "D:\\bayesian\\bayesian_heart_diagnosis\\data\\heart_disease_uci.csv",
+  "data_md5": "bde77728726675cb665f948df8ade988",
+  "raw_total_rows": 920,
+  "cleaned_total_rows": 920,
+  "train_rows": 736,
+  "test_rows": 184,
+  "test_size": 0.2,
+  "random_state": 42,
+  "train_statistics": {
+    "medians": {
+      "trestbps": 130.0,
+      "chol": 239.0,
+      "thalch": 140.0,
+      "oldpeak": 0.5
+    },
+    "modes": {
+      "fbs": "False",
+      "restecg": "normal",
+      "exang": "False",
+      "slope": "flat",
+      "ca": "0.0",
+      "thal": "normal"
+    }
+  },
+  "discretized_features": [
+    "age_bin",
+    "sex",
+    "cp",
+    "trestbps_bin",
+    "chol_bin",
+    "fbs",
+    "restecg",
+    "thalch_bin",
+    "exang",
+    "oldpeak_bin",
+    "slope",
+    "ca",
+    "thal"
+  ],
+  "target_col": "heart_disease",
+  "target_distribution_train": {
+    "1": 407,
+    "0": 329
+  },
+  "target_distribution_test": {
+    "1": 102,
+    "0": 82
+  }
+}

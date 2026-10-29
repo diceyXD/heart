@@ -1,0 +1,131 @@
+{
+  "project": "bayesian_heart_diagnosis",
+  "version": "1.0.0",
+  "trained_at_utc": "2026-10-29T05:59:18.211677+00:00",
+  "git_commit": "git-commit-unavailable",
+  "mlflow_run_id": "5152edc1f67b4d5d922b4e72d1c66297",
+  "data_provenance_md5": "bde77728726675cb665f948df8ade988",
+  "raw_data_file": "data/heart_disease_uci.csv",
+  "training_rows": 736,
+  "validation_rows": 184,
+  "target_variable": "heart_disease",
+  "nodes": [
+    "heart_disease",
+    "age_bin",
+    "sex",
+    "cp",
+    "trestbps_bin",
+    "chol_bin",
+    "fbs",
+    "restecg",
+    "thalch_bin",
+    "exang",
+    "oldpeak_bin",
+    "slope",
+    "ca",
+    "thal"
+  ],
+  "edges": [
+    [
+      "heart_disease",
+      "age_bin"
+    ],
+    [
+      "heart_disease",
+      "sex"
+    ],
+    [
+      "heart_disease",
+      "cp"
+    ],
+    [
+      "heart_disease",
+      "trestbps_bin"
+    ],
+    [
+      "heart_disease",
+      "chol_bin"
+    ],
+    [
+      "heart_disease",
+      "fbs"
+    ],
+    [
+      "heart_disease",
+      "restecg"
+    ],
+    [
+      "heart_disease",
+      "thalch_bin"
+    ],
+    [
+      "heart_disease",
+      "exang"
+    ],
+    [
+      "heart_disease",
+      "oldpeak_bin"
+    ],
+    [
+      "heart_disease",
+      "slope"
+    ],
+    [
+      "heart_disease",
+      "ca"
+    ],
+    [
+      "heart_disease",
+      "thal"
+    ]
+  ],
+  "train_metrics": {
+    "accuracy": 0.8288043478260869,
+    "f1": 0.847457627118644,
+    "roc_auc": 0.8854693322778431
+  },
+  "model_artifact": "models/bayesian_network.pkl",
+  "cpt_artifact": "models/cpt_tables.json",
+  "preprocessor_artifact": "models\\preprocessor.json",
+  "data_snapshot": "models/data_snapshot.csv",
+  "test_evaluation_metrics": {
+    "sample_size": 184,
+    "accuracy": 0.8206521739130435,
+    "precision": 0.8285714285714286,
+    "recall": 0.8529411764705882,
+    "sensitivity": 0.8529411764705882,
+    "specificity": 0.7804878048780488,
+    "f1_score": 0.8405797101449275,
+    "roc_auc": 0.8914395026303205,
+    "brier_score": 0.1433342911717483,
+    "log_loss": 0.4792075372490879,
+    "tn": 64,
+    "fp": 18,
+    "fn": 15,
+    "tp": 87,
+    "subgroups_sex": {
+      "Male": {
+        "sample_count": 149,
+        "accuracy": 0.8120805369127517
+      },
+      "Female": {
+        "sample_count": 35,
+        "accuracy": 0.8571428571428571
+      }
+    },
+    "subgroups_age": {
+      "middle": {
+        "sample_count": 95,
+        "accuracy": 0.8210526315789474
+      },
+      "senior": {
+        "sample_count": 48,
+        "accuracy": 0.8125
+      },
+      "young": {
+        "sample_count": 41,
+        "accuracy": 0.8292682926829268
+      }
+    }
+  }
+}

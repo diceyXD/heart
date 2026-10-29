@@ -1,0 +1,428 @@
+{
+  "heart_disease": {
+    "variable": "heart_disease",
+    "variable_cardinality": 2,
+    "evidence_nodes": [],
+    "probabilities": [
+      0.4470108695652174,
+      0.5529891304347826
+    ],
+    "state_names": {
+      "heart_disease": [
+        "0",
+        "1"
+      ]
+    }
+  },
+  "age_bin": {
+    "variable": "age_bin",
+    "variable_cardinality": 3,
+    "evidence_nodes": [
+      "heart_disease"
+    ],
+    "probabilities": [
+      [
+        0.513677811550152,
+        0.5872235872235873
+      ],
+      [
+        0.14285714285714285,
+        0.3095823095823096
+      ],
+      [
+        0.3434650455927052,
+        0.10319410319410319
+      ]
+    ],
+    "state_names": {
+      "age_bin": [
+        "middle",
+        "senior",
+        "young"
+      ],
+      "heart_disease": [
+        "0",
+        "1"
+      ]
+    }
+  },
+  "sex": {
+    "variable": "sex",
+    "variable_cardinality": 2,
+    "evidence_nodes": [
+      "heart_disease"
+    ],
+    "probabilities": [
+      [
+        0.3556231003039514,
+        0.10319410319410319
+      ],
+      [
+        0.6443768996960486,
+        0.8968058968058968
+      ]
+    ],
+    "state_names": {
+      "sex": [
+        "Female",
+        "Male"
+      ],
+      "heart_disease": [
+        "0",
+        "1"
+      ]
+    }
+  },
+  "cp": {
+    "variable": "cp",
+    "variable_cardinality": 4,
+    "evidence_nodes": [
+      "heart_disease"
+    ],
+    "probabilities": [
+      [
+        0.2613981762917933,
+        0.7542997542997543
+      ],
+      [
+        0.3586626139817629,
+        0.051597051597051594
+      ],
+      [
+        0.3161094224924012,
+        0.1547911547911548
+      ],
+      [
+        0.06382978723404255,
+        0.03931203931203931
+      ]
+    ],
+    "state_names": {
+      "cp": [
+        "asymptomatic",
+        "atypical angina",
+        "non-anginal",
+        "typical angina"
+      ],
+      "heart_disease": [
+        "0",
+        "1"
+      ]
+    }
+  },
+  "trestbps_bin": {
+    "variable": "trestbps_bin",
+    "variable_cardinality": 3,
+    "evidence_nodes": [
+      "heart_disease"
+    ],
+    "probabilities": [
+      [
+        0.45288753799392095,
+        0.4619164619164619
+      ],
+      [
+        0.17325227963525835,
+        0.26535626535626533
+      ],
+      [
+        0.3738601823708207,
+        0.2727272727272727
+      ]
+    ],
+    "state_names": {
+      "trestbps_bin": [
+        "elevated",
+        "high",
+        "normal"
+      ],
+      "heart_disease": [
+        "0",
+        "1"
+      ]
+    }
+  },
+  "chol_bin": {
+    "variable": "chol_bin",
+    "variable_cardinality": 3,
+    "evidence_nodes": [
+      "heart_disease"
+    ],
+    "probabilities": [
+      [
+        0.4072948328267477,
+        0.5257985257985258
+      ],
+      [
+        0.3860182370820669,
+        0.371007371007371
+      ],
+      [
+        0.2066869300911854,
+        0.10319410319410319
+      ]
+    ],
+    "state_names": {
+      "chol_bin": [
+        "borderline",
+        "high",
+        "normal"
+      ],
+      "heart_disease": [
+        "0",
+        "1"
+      ]
+    }
+  },
+  "fbs": {
+    "variable": "fbs",
+    "variable_cardinality": 2,
+    "evidence_nodes": [
+      "heart_disease"
+    ],
+    "probabilities": [
+      [
+        0.8905775075987842,
+        0.8230958230958231
+      ],
+      [
+        0.1094224924012158,
+        0.1769041769041769
+      ]
+    ],
+    "state_names": {
+      "fbs": [
+        "False",
+        "True"
+      ],
+      "heart_disease": [
+        "0",
+        "1"
+      ]
+    }
+  },
+  "restecg": {
+    "variable": "restecg",
+    "variable_cardinality": 3,
+    "evidence_nodes": [
+      "heart_disease"
+    ],
+    "probabilities": [
+      [
+        0.19756838905775076,
+        0.21621621621621623
+      ],
+      [
+        0.6534954407294833,
+        0.5454545454545454
+      ],
+      [
+        0.14893617021276595,
+        0.23832923832923833
+      ]
+    ],
+    "state_names": {
+      "restecg": [
+        "lv hypertrophy",
+        "normal",
+        "st-t abnormality"
+      ],
+      "heart_disease": [
+        "0",
+        "1"
+      ]
+    }
+  },
+  "thalch_bin": {
+    "variable": "thalch_bin",
+    "variable_cardinality": 3,
+    "evidence_nodes": [
+      "heart_disease"
+    ],
+    "probabilities": [
+      [
+        0.48024316109422494,
+        0.1597051597051597
+      ],
+      [
+        0.1337386018237082,
+        0.36363636363636365
+      ],
+      [
+        0.3860182370820669,
+        0.47665847665847666
+      ]
+    ],
+    "state_names": {
+      "thalch_bin": [
+        "high",
+        "low",
+        "moderate"
+      ],
+      "heart_disease": [
+        "0",
+        "1"
+      ]
+    }
+  },
+  "exang": {
+    "variable": "exang",
+    "variable_cardinality": 2,
+    "evidence_nodes": [
+      "heart_disease"
+    ],
+    "probabilities": [
+      [
+        0.8601823708206687,
+        0.44226044226044225
+      ],
+      [
+        0.1398176291793313,
+        0.5577395577395577
+      ]
+    ],
+    "state_names": {
+      "exang": [
+        "False",
+        "True"
+      ],
+      "heart_disease": [
+        "0",
+        "1"
+      ]
+    }
+  },
+  "oldpeak_bin": {
+    "variable": "oldpeak_bin",
+    "variable_cardinality": 3,
+    "evidence_nodes": [
+      "heart_disease"
+    ],
+    "probabilities": [
+      [
+        0.3282674772036474,
+        0.40540540540540543
+      ],
+      [
+        0.5866261398176292,
+        0.26044226044226043
+      ],
+      [
+        0.0851063829787234,
+        0.33415233415233414
+      ]
+    ],
+    "state_names": {
+      "oldpeak_bin": [
+        "mild",
+        "none",
+        "severe"
+      ],
+      "heart_disease": [
+        "0",
+        "1"
+      ]
+    }
+  },
+  "slope": {
+    "variable": "slope",
+    "variable_cardinality": 3,
+    "evidence_nodes": [
+      "heart_disease"
+    ],
+    "probabilities": [
+      [
+        0.0364741641337386,
+        0.09090909090909091
+      ],
+      [
+        0.6474164133738601,
+        0.7444717444717445
+      ],
+      [
+        0.3161094224924012,
+        0.16461916461916462
+      ]
+    ],
+    "state_names": {
+      "slope": [
+        "downsloping",
+        "flat",
+        "upsloping"
+      ],
+      "heart_disease": [
+        "0",
+        "1"
+      ]
+    }
+  },
+  "ca": {
+    "variable": "ca",
+    "variable_cardinality": 4,
+    "evidence_nodes": [
+      "heart_disease"
+    ],
+    "probabilities": [
+      [
+        0.9270516717325228,
+        0.8132678132678133
+      ],
+      [
+        0.05167173252279635,
+        0.085995085995086
+      ],
+      [
+        0.0182370820668693,
+        0.0687960687960688
+      ],
+      [
+        0.00303951367781155,
+        0.03194103194103194
+      ]
+    ],
+    "state_names": {
+      "ca": [
+        "0.0",
+        "1.0",
+        "2.0",
+        "3.0"
+      ],
+      "heart_disease": [
+        "0",
+        "1"
+      ]
+    }
+  },
+  "thal": {
+    "variable": "thal",
+    "variable_cardinality": 3,
+    "evidence_nodes": [
+      "heart_disease"
+    ],
+    "probabilities": [
+      [
+        0.030395136778115502,
+        0.0687960687960688
+      ],
+      [
+        0.8723404255319149,
+        0.6216216216216216
+      ],
+      [
+        0.0972644376899696,
+        0.3095823095823096
+      ]
+    ],
+    "state_names": {
+      "thal": [
+        "fixed defect",
+        "normal",
+        "reversable defect"
+      ],
+      "heart_disease": [
+        "0",
+        "1"
+      ]
+    }
+  }
+}

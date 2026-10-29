@@ -1,0 +1,13 @@
+pandas>=2.2.0
+numpy>=1.26.0
+pgmpy>=1.1.2
+scikit-learn>=1.4.0
+mlflow>=2.14.0
+fastapi>=0.110.0
+uvicorn>=0.28.0
+streamlit>=1.35.0
+pydantic>=2.7.0
+python-multipart>=0.0.9
+pyyaml>=6.0.1
+requests>=2.31.0
+matplotlib>=3.8.0

@@ -1,0 +1,48 @@
+======================================================================
+DATASET AUDIT & MISSING DATA REPORT
+UCI Heart Disease Comprehensive Multi-Center Dataset
+======================================================================
+Total Instances: 920
+Total Attributes: 16
+
+1. Overall Column Missingness Profile:
+----------------------------------------------------------------------
+Column          Missing Count   Missing (%)     Data Type
+----------------------------------------------------------------------
+id              0               0.00          % int64
+age             0               0.00          % int64
+sex             0               0.00          % str
+dataset         0               0.00          % str
+cp              0               0.00          % str
+trestbps        59              6.41          % float64
+chol            30              3.26          % float64
+fbs             90              9.78          % object
+restecg         2               0.22          % str
+thalch          55              5.98          % float64
+exang           55              5.98          % object
+oldpeak         62              6.74          % float64
+slope           309             33.59         % str
+ca              611             66.41         % float64
+thal            486             52.83         % str
+num             0               0.00          % int64
+
+2. Missingness Analysis Across Hospital Centers:
+----------------------------------------------------------------------
+               Total Rows  Missing ca  Missing thal  Missing slope  Zero/Missing chol
+dataset                                                                              
+Cleveland             304           5             3              1                  0
+Hungary               293         290           265            189                 23
+Switzerland           123         118            52             17                123
+VA Long Beach         200         198           166            102                 56
+
+3. Clinical Insights & Domain Assumptions:
+----------------------------------------------------------------------
+- 'ca' (fluoroscopy) and 'thal' (thallium stress test) show heavy missingness
+  (66.4% and 52.8%) outside the Cleveland clinic because non-US and VA centers
+  did not routinely perform these invasive or radio-isotope diagnostic procedures.
+- 'chol' has 172 zeros (primarily in VA Long Beach) where 0 denotes unmeasured cholesterol.
+- 'trestbps' has 1 zero entry representing unrecorded resting blood pressure.
+- In this pipeline, zeros in trestbps/chol are treated as NaN and imputed via
+  training-set medians. Missing categorical test results are imputed via training-set modes
+  to retain all 920 records without data leakage.
+======================================================================

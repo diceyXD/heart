@@ -1,0 +1,185 @@
+age_bin,sex,cp,trestbps_bin,chol_bin,fbs,restecg,thalch_bin,exang,oldpeak_bin,slope,ca,thal,heart_disease
+middle,Male,asymptomatic,elevated,borderline,False,normal,high,False,none,flat,0.0,normal,1
+senior,Male,asymptomatic,normal,high,False,st-t abnormality,moderate,True,severe,downsloping,0.0,fixed defect,1
+middle,Male,asymptomatic,high,high,False,normal,low,False,severe,flat,0.0,normal,1
+senior,Male,asymptomatic,elevated,high,False,normal,moderate,True,severe,downsloping,0.0,normal,1
+senior,Male,non-anginal,elevated,high,False,lv hypertrophy,moderate,False,mild,flat,0.0,normal,0
+middle,Male,non-anginal,elevated,high,False,normal,low,True,mild,flat,0.0,normal,0
+senior,Female,asymptomatic,normal,normal,False,normal,moderate,False,severe,flat,0.0,normal,0
+middle,Male,asymptomatic,elevated,borderline,False,normal,moderate,True,severe,flat,0.0,reversable defect,1
+middle,Male,atypical angina,elevated,borderline,False,normal,low,False,none,flat,0.0,normal,0
+young,Female,asymptomatic,normal,borderline,False,normal,high,False,severe,upsloping,0.0,normal,1
+middle,Male,atypical angina,high,borderline,False,lv hypertrophy,high,False,none,upsloping,1.0,normal,1
+middle,Male,atypical angina,normal,borderline,False,normal,high,False,none,downsloping,0.0,normal,0
+young,Female,atypical angina,elevated,high,False,normal,high,False,none,upsloping,0.0,normal,0
+middle,Female,asymptomatic,elevated,borderline,False,lv hypertrophy,high,False,none,upsloping,0.0,normal,0
+senior,Male,non-anginal,high,borderline,False,lv hypertrophy,low,False,severe,flat,2.0,normal,0
+middle,Male,asymptomatic,high,borderline,False,st-t abnormality,low,True,none,flat,0.0,normal,1
+senior,Female,non-anginal,elevated,high,False,lv hypertrophy,high,False,none,upsloping,0.0,normal,0
+middle,Male,asymptomatic,normal,borderline,False,normal,moderate,False,severe,flat,0.0,normal,1
+senior,Female,non-anginal,normal,borderline,False,lv hypertrophy,low,False,mild,flat,0.0,normal,0
+young,Male,typical angina,normal,borderline,False,normal,moderate,False,mild,upsloping,0.0,normal,1
+middle,Male,non-anginal,high,borderline,False,st-t abnormality,moderate,True,mild,flat,0.0,normal,0
+senior,Male,asymptomatic,high,borderline,True,st-t abnormality,moderate,False,mild,flat,0.0,reversable defect,1
+young,Female,atypical angina,normal,high,False,normal,moderate,False,none,flat,0.0,normal,0
+middle,Male,atypical angina,elevated,high,False,normal,moderate,False,none,flat,0.0,normal,0
+middle,Male,asymptomatic,elevated,high,False,normal,low,True,severe,flat,2.0,reversable defect,1
+middle,Male,asymptomatic,elevated,high,False,st-t abnormality,moderate,True,severe,flat,0.0,normal,1
+senior,Female,atypical angina,elevated,normal,False,normal,high,False,none,upsloping,2.0,normal,0
+middle,Male,asymptomatic,normal,borderline,True,normal,low,False,none,flat,0.0,normal,1
+middle,Male,typical angina,elevated,high,False,normal,moderate,False,none,flat,0.0,normal,1
+young,Female,atypical angina,normal,normal,False,normal,high,False,none,flat,0.0,normal,0
+middle,Male,atypical angina,high,normal,False,st-t abnormality,moderate,False,mild,upsloping,0.0,normal,0
+young,Male,asymptomatic,high,borderline,False,normal,high,False,none,upsloping,0.0,reversable defect,1
+middle,Male,asymptomatic,normal,high,False,normal,moderate,False,none,flat,0.0,normal,0
+middle,Male,asymptomatic,normal,borderline,False,st-t abnormality,low,False,none,flat,0.0,normal,0
+senior,Male,asymptomatic,elevated,high,False,lv hypertrophy,moderate,False,mild,flat,1.0,reversable defect,1
+middle,Male,asymptomatic,normal,normal,True,st-t abnormality,low,False,none,flat,0.0,normal,1
+middle,Male,asymptomatic,high,high,False,lv hypertrophy,low,True,mild,upsloping,0.0,reversable defect,1
+senior,Male,asymptomatic,high,normal,False,st-t abnormality,moderate,True,mild,flat,0.0,normal,1
+young,Male,atypical angina,elevated,borderline,False,normal,high,False,none,flat,0.0,normal,0
+middle,Female,atypical angina,normal,high,False,normal,moderate,False,mild,flat,0.0,normal,1
+middle,Male,asymptomatic,high,borderline,False,normal,moderate,True,mild,flat,0.0,normal,1
+senior,Male,asymptomatic,high,high,False,lv hypertrophy,low,True,mild,flat,3.0,normal,1
+senior,Male,asymptomatic,high,high,True,normal,low,True,severe,flat,0.0,normal,1
+young,Male,non-anginal,elevated,borderline,False,normal,high,True,mild,upsloping,0.0,normal,0
+middle,Male,non-anginal,elevated,borderline,False,normal,moderate,True,severe,downsloping,0.0,normal,1
+senior,Male,asymptomatic,high,borderline,False,normal,low,True,severe,flat,0.0,normal,1
+young,Male,asymptomatic,elevated,high,False,normal,moderate,True,severe,flat,0.0,fixed defect,1
+middle,Male,asymptomatic,elevated,borderline,False,normal,low,False,none,flat,0.0,normal,0
+middle,Male,non-anginal,normal,borderline,False,normal,low,False,none,flat,0.0,reversable defect,1
+senior,Male,typical angina,normal,borderline,False,lv hypertrophy,moderate,True,severe,flat,0.0,normal,0
+young,Male,asymptomatic,elevated,high,False,normal,high,False,none,flat,0.0,normal,0
+middle,Male,non-anginal,elevated,high,True,lv hypertrophy,high,False,none,upsloping,3.0,normal,0
+young,Male,non-anginal,elevated,normal,False,normal,moderate,False,none,upsloping,0.0,normal,0
+middle,Male,atypical angina,normal,borderline,False,normal,high,False,none,flat,0.0,normal,0
+senior,Male,asymptomatic,elevated,high,True,st-t abnormality,moderate,False,mild,flat,0.0,normal,1
+middle,Male,atypical angina,high,normal,False,normal,high,False,none,flat,0.0,normal,0
+middle,Male,asymptomatic,elevated,borderline,False,lv hypertrophy,moderate,True,mild,flat,0.0,reversable defect,1
+middle,Female,non-anginal,high,borderline,False,normal,high,False,none,upsloping,1.0,normal,0
+middle,Male,asymptomatic,high,high,False,st-t abnormality,moderate,False,mild,upsloping,0.0,normal,0
+middle,Female,atypical angina,elevated,high,False,normal,high,False,mild,upsloping,0.0,normal,0
+middle,Male,asymptomatic,elevated,high,False,lv hypertrophy,high,False,none,upsloping,0.0,normal,0
+senior,Male,asymptomatic,high,borderline,True,lv hypertrophy,moderate,False,mild,flat,0.0,normal,1
+middle,Male,non-anginal,normal,borderline,False,normal,moderate,False,none,flat,0.0,fixed defect,0
+middle,Male,asymptomatic,elevated,borderline,True,normal,high,True,mild,flat,0.0,normal,1
+middle,Male,atypical angina,high,high,False,normal,high,False,none,flat,0.0,normal,0
+middle,Male,asymptomatic,normal,normal,False,normal,low,False,none,flat,0.0,normal,1
+young,Female,asymptomatic,high,high,False,normal,moderate,False,severe,flat,0.0,fixed defect,1
+young,Male,asymptomatic,normal,borderline,False,normal,moderate,True,none,downsloping,0.0,normal,1
+young,Male,atypical angina,elevated,high,False,normal,moderate,False,none,flat,0.0,normal,0
+middle,Female,non-anginal,elevated,borderline,False,lv hypertrophy,low,False,none,upsloping,0.0,normal,0
+middle,Male,asymptomatic,elevated,borderline,False,normal,high,False,mild,flat,0.0,reversable defect,0
+middle,Male,asymptomatic,normal,borderline,False,normal,high,False,mild,downsloping,0.0,normal,1
+middle,Male,atypical angina,elevated,high,False,normal,high,True,none,flat,0.0,normal,0
+young,Male,asymptomatic,high,high,False,lv hypertrophy,moderate,True,none,flat,3.0,reversable defect,1
+young,Male,atypical angina,high,borderline,False,st-t abnormality,high,False,none,flat,0.0,normal,0
+young,Male,asymptomatic,high,borderline,False,normal,low,True,none,flat,0.0,normal,1
+middle,Male,asymptomatic,normal,borderline,False,normal,high,False,none,flat,0.0,reversable defect,1
+young,Male,asymptomatic,elevated,borderline,False,normal,low,False,mild,upsloping,0.0,normal,1
+senior,Male,asymptomatic,elevated,high,True,st-t abnormality,moderate,False,mild,flat,0.0,normal,1
+young,Male,typical angina,normal,borderline,False,normal,high,True,severe,flat,0.0,reversable defect,1
+middle,Male,non-anginal,elevated,borderline,False,normal,high,False,mild,flat,0.0,normal,1
+senior,Male,asymptomatic,elevated,borderline,False,lv hypertrophy,moderate,False,severe,upsloping,0.0,normal,1
+senior,Female,asymptomatic,elevated,high,True,normal,low,False,severe,flat,3.0,normal,1
+young,Male,non-anginal,elevated,normal,False,normal,moderate,False,none,flat,0.0,normal,0
+middle,Male,asymptomatic,elevated,high,False,lv hypertrophy,low,True,severe,flat,1.0,reversable defect,1
+middle,Female,asymptomatic,elevated,high,False,lv hypertrophy,moderate,False,mild,flat,0.0,normal,0
+young,Male,asymptomatic,elevated,borderline,False,normal,moderate,True,mild,flat,0.0,normal,1
+middle,Male,asymptomatic,high,high,False,normal,low,True,mild,flat,0.0,normal,1
+middle,Female,atypical angina,normal,high,False,normal,moderate,False,none,flat,0.0,normal,0
+young,Male,asymptomatic,high,high,False,normal,moderate,True,severe,flat,0.0,normal,1
+middle,Female,non-anginal,normal,normal,False,normal,moderate,False,none,flat,0.0,normal,0
+senior,Male,asymptomatic,normal,borderline,False,normal,low,False,mild,flat,0.0,normal,1
+young,Male,atypical angina,elevated,high,False,st-t abnormality,low,False,none,flat,0.0,normal,0
+middle,Female,atypical angina,normal,high,False,normal,moderate,False,mild,flat,0.0,normal,0
+young,Male,non-anginal,high,normal,True,normal,high,False,none,flat,0.0,normal,0
+middle,Male,asymptomatic,elevated,high,True,st-t abnormality,moderate,False,mild,flat,0.0,normal,1
+young,Male,asymptomatic,normal,normal,False,normal,low,True,mild,flat,0.0,reversable defect,1
+young,Male,asymptomatic,high,borderline,False,normal,low,True,mild,flat,0.0,normal,1
+middle,Male,non-anginal,normal,borderline,False,normal,high,True,none,upsloping,1.0,reversable defect,0
+middle,Male,asymptomatic,elevated,high,False,normal,moderate,True,mild,flat,1.0,reversable defect,1
+middle,Male,asymptomatic,normal,normal,False,normal,moderate,False,none,flat,0.0,reversable defect,1
+middle,Male,asymptomatic,elevated,high,True,st-t abnormality,moderate,True,severe,downsloping,0.0,normal,1
+senior,Female,asymptomatic,normal,high,False,normal,high,True,severe,flat,2.0,normal,1
+young,Male,non-anginal,normal,high,False,normal,high,False,none,upsloping,0.0,normal,0
+middle,Male,asymptomatic,high,high,False,normal,low,True,severe,flat,0.0,normal,1
+young,Male,asymptomatic,normal,borderline,False,normal,high,False,mild,upsloping,0.0,normal,1
+senior,Male,asymptomatic,high,normal,False,st-t abnormality,moderate,True,none,flat,0.0,normal,1
+senior,Male,asymptomatic,elevated,high,True,lv hypertrophy,moderate,False,none,flat,0.0,fixed defect,1
+middle,Female,non-anginal,elevated,high,False,lv hypertrophy,moderate,False,mild,upsloping,0.0,normal,0
+senior,Male,typical angina,elevated,high,True,lv hypertrophy,high,False,mild,flat,1.0,normal,1
+middle,Female,asymptomatic,high,borderline,False,normal,low,False,none,flat,0.0,normal,1
+senior,Female,atypical angina,elevated,borderline,False,normal,moderate,False,mild,flat,0.0,normal,0
+middle,Male,atypical angina,normal,normal,True,normal,high,False,none,upsloping,0.0,reversable defect,0
+middle,Male,asymptomatic,elevated,borderline,True,st-t abnormality,moderate,True,mild,flat,0.0,normal,1
+middle,Male,asymptomatic,elevated,borderline,False,st-t abnormality,moderate,True,severe,flat,0.0,normal,1
+middle,Male,asymptomatic,high,borderline,False,normal,moderate,False,severe,flat,0.0,normal,1
+senior,Male,asymptomatic,normal,borderline,False,normal,low,True,mild,downsloping,0.0,normal,1
+middle,Male,atypical angina,normal,high,False,normal,high,False,none,flat,0.0,normal,0
+young,Female,atypical angina,elevated,borderline,False,normal,high,False,none,flat,0.0,normal,0
+middle,Male,asymptomatic,elevated,borderline,False,normal,low,False,none,flat,0.0,reversable defect,1
+young,Female,non-anginal,normal,normal,False,normal,high,False,mild,flat,0.0,normal,0
+senior,Male,asymptomatic,high,borderline,True,normal,low,True,mild,flat,0.0,normal,1
+young,Male,asymptomatic,normal,borderline,False,normal,high,False,none,flat,0.0,normal,0
+senior,Male,non-anginal,elevated,borderline,True,st-t abnormality,high,False,severe,flat,0.0,normal,0
+middle,Female,non-anginal,elevated,borderline,False,st-t abnormality,high,False,none,flat,0.0,reversable defect,0
+young,Male,asymptomatic,normal,borderline,False,normal,moderate,False,mild,flat,0.0,reversable defect,1
+middle,Male,non-anginal,elevated,normal,False,normal,high,False,none,flat,0.0,normal,0
+middle,Male,asymptomatic,elevated,borderline,False,lv hypertrophy,moderate,True,severe,flat,2.0,reversable defect,1
+senior,Male,non-anginal,elevated,borderline,True,st-t abnormality,moderate,False,mild,flat,0.0,normal,1
+young,Male,non-anginal,elevated,high,False,normal,high,False,severe,downsloping,0.0,normal,0
+young,Male,atypical angina,normal,normal,False,normal,moderate,False,none,flat,0.0,normal,0
+middle,Male,asymptomatic,elevated,borderline,False,normal,high,True,none,upsloping,0.0,reversable defect,0
+middle,Male,atypical angina,elevated,high,False,normal,low,False,none,flat,0.0,normal,0
+middle,Female,atypical angina,elevated,high,False,st-t abnormality,moderate,False,none,flat,0.0,normal,0
+middle,Female,asymptomatic,high,borderline,True,lv hypertrophy,moderate,True,severe,flat,2.0,fixed defect,1
+middle,Male,asymptomatic,high,normal,False,lv hypertrophy,moderate,True,mild,flat,0.0,reversable defect,1
+young,Male,asymptomatic,normal,high,False,normal,high,False,none,flat,0.0,normal,1
+young,Male,atypical angina,normal,high,False,st-t abnormality,high,False,none,flat,0.0,normal,0
+senior,Male,non-anginal,high,normal,True,normal,moderate,False,none,flat,0.0,fixed defect,1
+middle,Male,atypical angina,elevated,borderline,True,normal,high,False,severe,flat,0.0,normal,0
+senior,Male,asymptomatic,elevated,borderline,False,normal,moderate,False,none,flat,0.0,fixed defect,1
+senior,Male,asymptomatic,elevated,borderline,False,normal,low,True,none,flat,0.0,reversable defect,1
+middle,Female,asymptomatic,normal,high,True,lv hypertrophy,low,False,mild,upsloping,0.0,normal,0
+young,Male,atypical angina,elevated,high,False,normal,high,False,none,flat,0.0,normal,0
+senior,Male,asymptomatic,normal,borderline,False,normal,moderate,True,severe,downsloping,0.0,normal,1
+middle,Male,non-anginal,high,borderline,False,st-t abnormality,low,True,none,flat,0.0,normal,1
+senior,Female,asymptomatic,elevated,high,False,st-t abnormality,low,True,mild,flat,0.0,normal,0
+middle,Male,non-anginal,high,borderline,False,normal,low,False,none,flat,0.0,normal,0
+young,Male,atypical angina,normal,high,False,normal,high,False,severe,flat,0.0,normal,1
+young,Male,asymptomatic,normal,borderline,False,normal,moderate,True,mild,flat,0.0,normal,1
+senior,Male,non-anginal,elevated,high,False,lv hypertrophy,moderate,False,severe,flat,3.0,reversable defect,1
+middle,Female,non-anginal,normal,borderline,False,normal,high,False,severe,flat,0.0,normal,0
+senior,Male,non-anginal,high,high,True,lv hypertrophy,moderate,True,severe,flat,0.0,reversable defect,1
+middle,Male,asymptomatic,elevated,high,True,lv hypertrophy,moderate,False,mild,flat,0.0,normal,0
+middle,Male,asymptomatic,elevated,borderline,False,normal,low,False,mild,upsloping,2.0,normal,1
+middle,Male,asymptomatic,high,high,False,st-t abnormality,low,True,mild,flat,0.0,normal,1
+middle,Female,asymptomatic,normal,high,False,st-t abnormality,low,False,none,flat,0.0,normal,0
+senior,Male,non-anginal,normal,borderline,False,lv hypertrophy,low,False,none,flat,0.0,normal,0
+middle,Male,asymptomatic,normal,high,False,normal,low,True,none,flat,0.0,normal,1
+senior,Male,non-anginal,elevated,high,False,normal,moderate,False,mild,flat,0.0,normal,1
+middle,Male,typical angina,normal,high,False,normal,moderate,False,none,flat,0.0,normal,0
+middle,Male,asymptomatic,elevated,borderline,False,st-t abnormality,moderate,True,mild,downsloping,1.0,normal,1
+senior,Male,non-anginal,elevated,borderline,False,normal,moderate,False,severe,flat,3.0,reversable defect,0
+middle,Male,atypical angina,elevated,borderline,False,normal,high,False,none,flat,0.0,normal,0
+senior,Male,asymptomatic,high,borderline,False,normal,high,False,none,upsloping,1.0,reversable defect,1
+senior,Male,typical angina,high,borderline,True,lv hypertrophy,moderate,False,mild,flat,1.0,normal,0
+senior,Male,asymptomatic,normal,borderline,False,st-t abnormality,low,True,none,flat,0.0,reversable defect,1
+senior,Male,non-anginal,high,high,False,normal,low,True,severe,flat,1.0,reversable defect,1
+middle,Female,atypical angina,normal,borderline,False,normal,moderate,False,none,flat,0.0,normal,0
+senior,Male,asymptomatic,normal,high,False,lv hypertrophy,low,True,severe,downsloping,1.0,normal,1
+middle,Male,asymptomatic,elevated,high,True,lv hypertrophy,low,True,severe,downsloping,0.0,reversable defect,1
+middle,Male,asymptomatic,elevated,high,False,normal,high,False,none,flat,0.0,normal,0
+senior,Male,asymptomatic,normal,high,False,normal,moderate,True,severe,flat,1.0,reversable defect,1
+middle,Male,asymptomatic,elevated,borderline,False,st-t abnormality,low,True,severe,downsloping,0.0,normal,1
+young,Male,asymptomatic,elevated,borderline,False,normal,moderate,False,none,flat,0.0,normal,0
+middle,Male,asymptomatic,normal,high,True,normal,low,False,none,flat,0.0,normal,1
+middle,Female,atypical angina,high,borderline,False,normal,moderate,False,none,flat,0.0,normal,0
+young,Male,typical angina,normal,normal,False,lv hypertrophy,high,False,none,upsloping,0.0,normal,0
+senior,Male,asymptomatic,elevated,borderline,False,normal,moderate,True,severe,flat,0.0,normal,1
+middle,Male,typical angina,elevated,borderline,False,lv hypertrophy,moderate,True,mild,upsloping,1.0,normal,0
+senior,Male,asymptomatic,high,high,True,st-t abnormality,low,True,severe,flat,0.0,normal,1
+middle,Male,asymptomatic,elevated,borderline,False,normal,low,False,none,flat,0.0,normal,1
+middle,Male,asymptomatic,normal,borderline,False,normal,moderate,False,mild,upsloping,0.0,normal,1
+middle,Female,asymptomatic,elevated,borderline,False,st-t abnormality,moderate,True,severe,flat,1.0,reversable defect,1

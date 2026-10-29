@@ -1,0 +1,89 @@
+# Bayesian Network for Medical Diagnosis Configuration
+
+project:
+  name: "bayesian_heart_diagnosis"
+  version: "1.0.0"
+  description: "Probabilistic inference prototype for heart disease risk estimation using Bayesian Networks"
+
+paths:
+  raw_data: "data/heart_disease_uci.csv"
+  data_snapshot: "models/data_snapshot.csv"
+  model_dir: "models"
+  model_artifact: "models/bayesian_network.pkl"
+  model_metadata: "models/model_meta.json"
+  cpt_tables: "models/cpt_tables.json"
+  reports_dir: "reports"
+  evaluation_report: "reports/evaluation_report.md"
+  missing_data_report: "reports/missing_data_report.txt"
+  confusion_matrix_plot: "reports/confusion_matrix.png"
+  calibration_curve_plot: "reports/calibration_curve.png"
+  logs_dir: "logs"
+  api_log: "logs/api.log"
+  predictions_log: "logs/predictions.jsonl"
+  errors_log: "logs/errors.log"
+  mlrun_dir: "mlruns"
+
+data:
+  test_size: 0.2
+  random_state: 42
+  target_col: "heart_disease"
+  
+  # Bin definitions for continuous features
+  bins:
+    age:
+      edges: [0, 45, 60, 120]
+      labels: ["young", "middle", "senior"]
+    trestbps:
+      edges: [0, 120, 140, 300]
+      labels: ["normal", "elevated", "high"]
+    chol:
+      edges: [0, 200, 240, 1000]
+      labels: ["normal", "borderline", "high"]
+    thalch:
+      edges: [0, 120, 150, 300]
+      labels: ["low", "moderate", "high"]
+    oldpeak:
+      edges: [-10.0, 0.0, 1.5, 20.0]
+      labels: ["none", "mild", "severe"]
+
+  categorical_features:
+    - "sex"
+    - "cp"
+    - "fbs"
+    - "restecg"
+    - "exang"
+    - "slope"
+    - "ca"
+    - "thal"
+
+  discretized_features:
+    - "age_bin"
+    - "sex"
+    - "cp"
+    - "trestbps_bin"
+    - "chol_bin"
+    - "fbs"
+    - "restecg"
+    - "thalch_bin"
+    - "exang"
+    - "oldpeak_bin"
+    - "slope"
+    - "ca"
+    - "thal"
+
+model:
+  network_type: "DiscreteBayesianNetwork"
+  estimator: "DiscreteMLE"  # Maximum Likelihood Estimator
+  target_node: "heart_disease"
+
+mlflow:
+  experiment_name: "heart_disease_bayesian_network"
+  tracking_uri: "sqlite:///mlruns/mlflow.db"
+
+api:
+  host: "0.0.0.0"
+  port: 8000
+
+streamlit:
+  host: "0.0.0.0"
+  port: 8501

@@ -1,0 +1,6 @@
+2026-10-29 11:32:55,623 [INFO] BayesianDiagnosisInference engine initialized successfully.
+2026-10-29 11:32:55,629 [INFO] GET /health - Status: 200 - Latency: 5.01ms
+2026-10-29 11:32:55,631 [INFO] GET /metadata - Status: 200 - Latency: 0.00ms
+2026-10-29 11:32:55,635 [INFO] POST /predict - Status: 200 - Latency: 2.01ms
+2026-10-29 11:32:55,639 [INFO] BayesianDiagnosisInference engine initialized successfully.
+2026-10-29 11:32:55,640 [INFO] POST /predict - Status: 422 - Latency: 0.53ms
