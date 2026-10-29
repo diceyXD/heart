@@ -1,9 +1,9 @@
 {
   "project": "bayesian_heart_diagnosis",
   "version": "1.0.0",
-  "trained_at_utc": "2026-10-29T05:59:18.211677+00:00",
-  "git_commit": "git-commit-unavailable",
-  "mlflow_run_id": "5152edc1f67b4d5d922b4e72d1c66297",
+  "trained_at_utc": "2026-10-29T06:04:11.356602+00:00",
+  "git_commit": "668ed4013a26f98ab4f5ffc6b21bb5e67d9088c8",
+  "mlflow_run_id": "2200f9eb5547477d89815d07d4553e1b",
   "data_provenance_md5": "bde77728726675cb665f948df8ade988",
   "raw_data_file": "data/heart_disease_uci.csv",
   "training_rows": 736,
