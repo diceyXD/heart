@@ -91,12 +91,9 @@
 
 % Front matter pages
 \include{coverpage}
-\include{certificate1}
-\include{declaration}
 
 \pagenumbering{roman} 
 \include{abstract}
-\include{acknowledgement1}
 
 \thispagestyle{empty}
 \newpage
@@ -204,19 +201,21 @@ A distinctive characteristic of multi-center medical registries is institutional
 \begin{table}[!htbp]
 \centering
 \caption{Missingness audit across the four participating clinical centers}
-\begin{tabular}{lrrrrr}
+\label{tab:missing_centers}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lccccc}
 \toprule
-\textbf{Clinical Center} & \textbf{Patients} & \textbf{Missing \texttt{ca}} & \textbf{Missing \texttt{thal}} & \textbf{Missing \texttt{slope}} & \textbf{Zero/NaN \texttt{chol}} \\
+\textbf{Clinical Center} & \textbf{Patients} & \textbf{Missing \texttt{ca}} & \textbf{Missing \texttt{thal}} & \textbf{Missing \texttt{slope}} & \textbf{Missing \texttt{chol}} \\
 \midrule
 Cleveland Clinic & 304 & 5 (1.6\%) & 3 (1.0\%) & 1 (0.3\%) & 0 (0.0\%) \\
 Hungarian Institute & 293 & 290 (99.0\%) & 265 (90.4\%) & 189 (64.5\%) & 23 (7.8\%) \\
-University Hospital (Swiss) & 123 & 118 (95.9\%) & 52 (42.3\%) & 17 (13.8\%) & 123 (100.0\%) \\
+University Hospital (Zurich/Basel) & 123 & 118 (95.9\%) & 52 (42.3\%) & 17 (13.8\%) & 123 (100.0\%) \\
 VA Long Beach & 200 & 198 (99.0\%) & 166 (83.0\%) & 102 (51.0\%) & 56 (28.0\%) \\
 \midrule
 \textbf{Total Multi-Center} & \textbf{920} & \textbf{611 (66.4\%)} & \textbf{486 (52.8\%)} & \textbf{309 (33.6\%)} & \textbf{202 (22.0\%)} \\
 \bottomrule
-\end{tabular}
-\label{tab:missing_centers}
+\end{tabular}%
+}
 \end{table}
 
 The audit demonstrates that invasive fluoroscopy (\texttt{ca}) and thallium scintigraphy stress scans (\texttt{thal}) exhibit heavy missingness ($>90\%$) outside the Cleveland Clinic. Rather than discarding incomplete records (which would truncate the dataset to just 299 cases and introduce severe geographic selection bias), the entire cohort of 920 patients is preserved through training-set imputation during preprocessing and Bayesian marginalization during live inference.
@@ -497,6 +496,8 @@ To support post-deployment governance, operational events are recorded without s
 \begin{table}[!htbp]
 \centering
 \caption{Data drift and model maintenance monitoring plan}
+\label{tab:monitoring_plan}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{lll}
 \toprule
 \textbf{Monitoring Dimension} & \textbf{Detection Methodology} & \textbf{Maintenance Trigger Threshold} \\
@@ -506,8 +507,8 @@ Covariate / Input Drift & Kolmogorov-Smirnov test (vitals) & $p < 0.05$ on 200 i
 Target Concept Drift & Rolling Brier Score \& Log-Loss & Rolling Brier score exceeds $0.200$ \\
 Service Health & P95 latency and HTTP 5xx error rate & Latency $> 150\text{ ms}$ or Error rate $> 1.0\%$ \\
 \bottomrule
-\end{tabular}
-\label{tab:monitoring_plan}
+\end{tabular}%
+}
 \end{table}
 
 When drift thresholds are breached, the automated pipeline script \texttt{python src/train.py} is executed to re-estimate CPT parameters from updated cohorts.
