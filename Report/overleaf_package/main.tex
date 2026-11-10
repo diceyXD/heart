@@ -1,0 +1,605 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{cite}
+\usepackage{framed}
+\usepackage{a4wide}
+\usepackage{float}
+\usepackage{epsfig}
+\usepackage{longtable}
+\usepackage{enumerate}
+\usepackage{afterpage}
+\usepackage{multirow}
+\usepackage{ragged2e}
+\usepackage{gensymb}
+\usepackage{amsfonts} 
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{txfonts}
+\usepackage{lipsum}
+
+\newcommand{\Usefont}[1]{\fontfamily{#1}\selectfont}
+
+\usepackage{lscape}
+\renewcommand{\baselinestretch}{1.7} 
+
+\usepackage{xpatch}
+\usepackage{url}
+\usepackage{subcaption}
+\usepackage{textcomp}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,fit,positioning}
+
+\linespread{1.5}
+\usepackage[intoc, english]{nomencl}
+\hyphenpenalty=5000
+\tolerance=1000
+
+% ******* References config *********
+\bibliographystyle{IEEEtran}
+\renewcommand{\bibname}{References}
+
+%*********************Figures*****************************
+\graphicspath{{figures/}}
+
+% Helper: inserts figure if file exists, otherwise displays a placeholder box
+\newcommand{\safefig}[4]{%
+\begin{figure}[!htbp]
+\centering
+\IfFileExists{figures/#1}{\includegraphics[width=#2\textwidth]{#1}}{%
+\fbox{\parbox[c][4cm][c]{0.8\textwidth}{\centering Insert figure:\\ \texttt{\detokenize{#1}}}}}
+\caption{#3}
+\label{#4}
+\end{figure}}
+
+\raggedbottom
+\begin{document}
+
+%**** Student and Institutional Metadata *************
+\gdef \title{Bayesian Network for Medical Diagnosis Using Probabilistic Graphical Models and MLOps}
+\gdef \dept{Centre for Artificial Intelligence}
+\gdef \degree{Master of Technology}
+\gdef \branch{Artificial Intelligence}
+\gdef \college{TKM College of Engineering}
+\gdef \collegeplace{Kollam}
+
+\gdef \author{SREERAM S}
+\gdef \rollno{TKM25MEAI15}
+\gdef \deptabbr{Dept. of CSE}
+
+\gdef \guide{Prof. Sabeena K}
+\gdef \guidedes{Assistant Professor}
+
+\gdef \procordinatorA{Prof. Swathy S}
+\gdef \procordinatorAdes{Assistant Professor}
+
+\gdef \procordinatorB{Prof. Project Coordinator 2}
+\gdef \procordinatorBdes{Assistant Professor}
+
+\gdef \hod{Dr. Smitha P}
+\gdef \hoddes{Professor and Head}
+
+\gdef \acadyear{2025 - 26}
+\gdef \month{NOVEMBER 2026}
+\gdef \date{10-11-2026}
+
+% Front matter pages
+\include{coverpage}
+\include{certificate1}
+\include{declaration}
+
+\pagenumbering{roman} 
+\include{abstract}
+\include{acknowledgement1}
+
+\thispagestyle{empty}
+\newpage
+    
+% Table of Contents
+\tableofcontents
+\listoffigures
+\listoftables
+
+% Body of the report
+\cleardoublepage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+%%********************Chapter 1**********
+\chapter{Introduction}
+
+\section{Background and Motivation}
+
+Coronary artery disease (CAD) remains one of the principal causes of morbidity and mortality globally. Timely and accurate identification of individuals at risk of CAD is essential for preventing myocardial infarction, heart failure, and sudden cardiac death. However, clinical decision-making in cardiology is inherently fraught with uncertainty. Physicians routinely encounter heterogeneous diagnostic indicators ranging from subjective patient-reported symptoms (such as chest pain presentation) and non-invasive vitals (resting blood pressure, serum cholesterol, exercise tolerance) to specialized electrocardiographic stress testing and invasive fluoroscopy.
+
+A major challenge in clinical practice is that patients rarely undergo the entire battery of diagnostic investigations during preliminary consultations. Invasive coronary angiography or radioactive thallium scintigraphy may be contraindicated, unavailable, or deferred due to cost and safety considerations. Consequently, real-world clinical datasets exhibit significant missingness across diagnostic modalities. 
+
+Standard discriminative machine learning algorithms---such as Logistic Regression, Support Vector Machines, Random Forests, and Gradient Boosted Trees---are ill-suited for this environment. These traditional models require complete feature vectors at inference time, mandating artificial imputation schemes when evidence is absent. Furthermore, their output scores are frequently uncalibrated margins rather than valid probabilistic measures, providing clinicians with deceptive certainty.
+
+\section{Probabilistic Graphical Models and Bayesian Networks}
+
+Bayesian Networks (BNs) provide a principled, mathematically rigorous framework for reasoning under uncertainty. A Bayesian Network represents joint probability distributions compactly over a set of random variables through a Directed Acyclic Graph (DAG) paired with Conditional Probability Tables (CPTs). In a diagnostic setting, Bayesian Networks offer three fundamental advantages over conventional discriminative classifiers:
+
+\begin{enumerate}
+\item \textbf{Native Handling of Partial Evidence:} Through exact probabilistic inference algorithms such as Variable Elimination or Junction Tree propagation, unobserved symptoms or unperformed laboratory tests are marginalized out automatically. The network computes the exact posterior probability $P(\text{Disease} \mid \text{Evidence})$ conditioned strictly on the observed subset without requiring ad-hoc data imputation.
+\item \textbf{Calibrated Posterior Probabilities:} Rather than producing uncalibrated decision boundaries, Bayesian Networks generate well-founded statistical probabilities representing the degree of belief in the pathological condition.
+\item \textbf{Explainable Causal and Diagnostic Structure:} The graphical topology encodes explicit conditional dependence and independence assumptions, allowing clinicians to inspect both prior distributions and conditional likelihoods across distinct clinical subpopulations.
+\end{enumerate}
+
+\section{Integration with MLOps Practices}
+
+While machine learning research often terminates with offline model evaluation, translating a probabilistic model into clinical decision support requires Machine Learning Operations (MLOps). Production deployment demands repeatable data pipelines, continuous provenance tracking, version-controlled artifacts, scalable prediction APIs, interactive clinical user interfaces, containerisation, operational logging, and data drift monitoring.
+
+This project implements an end-to-end, production-ready Bayesian Network diagnostic system using the multi-center UCI Heart Disease dataset. The development workflow incorporates MLflow for experiment tracking, pgmpy for probabilistic graphical modeling, FastAPI for high-throughput RESTful inference, Streamlit for an interactive clinician dashboard, and Docker for cross-platform containerized execution.
+
+\section{Project Objectives}
+
+The primary objectives of this project are:
+\begin{itemize}
+\item To design a clean, data-leakage-free preprocessing and discretization pipeline for the multi-center UCI Heart Disease dataset.
+\item To formulate a clinically grounded Bayesian Network DAG structure and estimate its Conditional Probability Tables using Discrete Maximum Likelihood Estimation.
+\item To perform exact probabilistic inference under complete and partial evidence profiles using Variable Elimination.
+\item To rigorously evaluate diagnostic sensitivity, specificity, discrimination (ROC-AUC), and probability calibration (Brier score) on a held-out test split.
+\item To track all parameters, metrics, CPTs, and dataset provenance cryptographically in MLflow.
+\item To expose the inference engine through a validated FastAPI service and an intuitive Streamlit interface featuring live risk stratification, dynamic probability gauges, and a mandatory medical safety disclaimer.
+\item To containerise the multi-service architecture using Docker and Docker Compose, and establish comprehensive operational logging and data-drift monitoring protocols.
+\end{itemize}
+
+%%********************Chapter 2**********
+\chapter{Dataset and Exploratory Data Analysis}
+
+\section{Dataset Description}
+
+The application is developed using the comprehensive UCI Heart Disease dataset, which aggregates records from four international clinical institutions:
+\begin{enumerate}
+\item \textbf{Cleveland Clinic Foundation}, Cleveland, Ohio, USA ($N = 304$).
+\item \textbf{Hungarian Institute of Cardiology}, Budapest, Hungary ($N = 293$).
+\item \textbf{University Hospital}, Zurich and Basel, Switzerland ($N = 123$).
+\item \textbf{V.A. Medical Center}, Long Beach, California, USA ($N = 200$).
+\end{enumerate}
+
+The raw aggregated dataset contains 920 patient instances and 16 attributes. The original target variable is \texttt{num}, representing angiographic disease status ranging from 0 (absence of significant stenosis, defined as $<50\%$ diameter narrowing) to stages 1, 2, 3, and 4 (presence of coronary stenosis in one to four major coronary arteries). In alignment with clinical screening objectives, the target is binarized into \texttt{heart\_disease}, where 0 represents absence and 1 represents the presence of coronary heart disease.
+
+The administrative columns \texttt{id} and \texttt{dataset} are non-clinical indicators and are excluded from predictive modeling, leaving 13 clinical and diagnostic features.
+
+\section{Data Cleaning and Anomaly Correction}
+
+Careful clinical inspection of the raw data revealed domain-specific recording anomalies:
+\begin{itemize}
+\item \textbf{Resting Blood Pressure (\texttt{trestbps}):} Contains 59 missing values and 1 erroneous entry of $0\text{ mmHg}$, representing unrecorded admission vitals.
+\item \textbf{Serum Cholesterol (\texttt{chol}):} Contains 30 explicit missing values and 172 records with $0\text{ mg/dl}$ (predominantly at the VA Long Beach site), reflecting institutional coding conventions where unmeasured lipid panels were recorded as zero.
+\end{itemize}
+
+In this pipeline, physiological zeros in \texttt{trestbps} and \texttt{chol} are treated as genuine missing values ($\text{NaN}$) to prevent distortion of probability distributions.
+
+\begin{table}[!htbp]
+\centering
+\caption{Summary of the UCI Heart Disease dataset before and after cleaning}
+\begin{tabular}{lr}
+\toprule
+\textbf{Attribute Category} & \textbf{Count / Value} \\
+\midrule
+Total original patient instances & 920 \\
+Original raw attributes & 16 \\
+Administrative columns dropped (\texttt{id}, \texttt{dataset}) & 2 \\
+Target variable & \texttt{heart\_disease} (binarized: $0$ vs $1$) \\
+Physiological zeros corrected to NaN (\texttt{chol} + \texttt{trestbps}) & $172 + 1 = 173$ \\
+Predictive clinical input features & 13 \\
+Cleaned patient records retained & 920 \\
+\bottomrule
+\end{tabular}
+\label{tab:dataset_summary}
+\end{table}
+
+\section{Missing Data Audit Across Clinical Centers}
+
+A distinctive characteristic of multi-center medical registries is institutional heterogeneity in diagnostic protocols. Table \ref{tab:missing_centers} provides a detailed audit of feature missingness across the four clinical centers.
+
+\begin{table}[!htbp]
+\centering
+\caption{Missingness audit across the four participating clinical centers}
+\begin{tabular}{lrrrrr}
+\toprule
+\textbf{Clinical Center} & \textbf{Patients} & \textbf{Missing \texttt{ca}} & \textbf{Missing \texttt{thal}} & \textbf{Missing \texttt{slope}} & \textbf{Zero/NaN \texttt{chol}} \\
+\midrule
+Cleveland Clinic & 304 & 5 (1.6\%) & 3 (1.0\%) & 1 (0.3\%) & 0 (0.0\%) \\
+Hungarian Institute & 293 & 290 (99.0\%) & 265 (90.4\%) & 189 (64.5\%) & 23 (7.8\%) \\
+University Hospital (Swiss) & 123 & 118 (95.9\%) & 52 (42.3\%) & 17 (13.8\%) & 123 (100.0\%) \\
+VA Long Beach & 200 & 198 (99.0\%) & 166 (83.0\%) & 102 (51.0\%) & 56 (28.0\%) \\
+\midrule
+\textbf{Total Multi-Center} & \textbf{920} & \textbf{611 (66.4\%)} & \textbf{486 (52.8\%)} & \textbf{309 (33.6\%)} & \textbf{202 (22.0\%)} \\
+\bottomrule
+\end{tabular}
+\label{tab:missing_centers}
+\end{table}
+
+The audit demonstrates that invasive fluoroscopy (\texttt{ca}) and thallium scintigraphy stress scans (\texttt{thal}) exhibit heavy missingness ($>90\%$) outside the Cleveland Clinic. Rather than discarding incomplete records (which would truncate the dataset to just 299 cases and introduce severe geographic selection bias), the entire cohort of 920 patients is preserved through training-set imputation during preprocessing and Bayesian marginalization during live inference.
+
+\section{Dataset Structure and Partitioning}
+
+To guarantee strict reproducibility and preclude data leakage, the cleaned dataset is split into an 80\% training partition and a 20\% held-out test partition using stratified sampling on the binary target.
+
+\begin{table}[!htbp]
+\centering
+\caption{Dataset partitions and disease prevalence}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Partition} & \textbf{Total Instances} & \textbf{No Disease ($0$)} & \textbf{Disease Present ($1$)} \\
+\midrule
+Complete Cohort & 920 & 411 (44.67\%) & 509 (55.33\%) \\
+Training Partition (80\%) & 736 & 329 (44.70\%) & 407 (55.30\%) \\
+Held-Out Test Partition (20\%) & 184 & 82 (44.57\%) & 102 (55.43\%) \\
+\bottomrule
+\end{tabular}
+\label{tab:partitions}
+\end{table}
+
+The cryptographic MD5 checksum of the raw dataset is recorded as \texttt{bde77728726675cb665f948df8ade988}. A copy of this data is snapshotted to \texttt{models/data\_snapshot.csv} to maintain complete experimental provenance.
+
+\section{Exploratory Data Analysis}
+
+\safefig{heart_disease_distribution.png}{0.65}{Target class distribution in the multi-center cohort ($N = 920$)}{fig:class_dist}
+
+Figure \ref{fig:class_dist} displays the overall target class distribution. The cohort exhibits a well-balanced prevalence of coronary heart disease: 509 patients (55.33\%) possess angiographically confirmed stenosis, while 411 patients (44.67\%) are free of significant coronary disease.
+
+\safefig{age_by_heart_disease.png}{0.75}{Patient age distribution stratified by coronary heart disease diagnosis}{fig:age_dist}
+
+Figure \ref{fig:age_dist} illustrates the distribution of age across both diagnostic classes. Patients diagnosed with coronary disease are concentrated in the older demographics (55 to 65 years), whereas non-diseased individuals exhibit a broader, younger distribution centered around 40 to 52 years.
+
+\safefig{chest_pain_distribution.png}{0.75}{Coronary disease prevalence across chest pain categories}{fig:cp_dist}
+
+Figure \ref{fig:cp_dist} demonstrates the relationship between chest pain type (\texttt{cp}) and coronary artery disease. Clinically counter-intuitive to lay assumptions, asymptomatic presentation (\texttt{asymptomatic}) is associated with the highest disease prevalence ($>75\%$), whereas typical angina and non-anginal pain exhibit substantially lower rates of severe obstructive CAD.
+
+%%********************Chapter 3**********
+\chapter{Methodology}
+
+\section{Leakage-Free Preprocessing and Discretization}
+
+Bayesian Networks parameterized with tabular Conditional Probability Tables (Discrete Bayesian Networks) require discrete or categorical state spaces for all nodes. To transform continuous physiological measurements into discrete states without introducing data leakage, a deterministic, domain-knowledge-driven binning strategy is implemented.
+
+To strictly avoid data leakage, all statistical imputers (medians for continuous vitals and modes for categorical observations) are computed \textbf{exclusively on the 736-record training split}. The held-out test split is transformed using these frozen training statistics.
+
+\begin{table}[!htbp]
+\centering
+\caption{Clinical discretization rules for continuous variables}
+\begin{tabular}{lll}
+\toprule
+\textbf{Feature} & \textbf{Cutoff Bins} & \textbf{Discrete State Labels} \\
+\midrule
+Age (\texttt{age}) & $[0, 45, 60, 120]$ & \texttt{young}, \texttt{middle}, \texttt{senior} \\
+Resting Blood Pressure (\texttt{trestbps}) & $[0, 120, 140, 300]\text{ mmHg}$ & \texttt{normal}, \texttt{elevated}, \texttt{high} \\
+Serum Cholesterol (\texttt{chol}) & $[0, 200, 240, 1000]\text{ mg/dl}$ & \texttt{normal}, \texttt{borderline}, \texttt{high} \\
+Max Heart Rate (\texttt{thalch}) & $[0, 120, 150, 300]\text{ bpm}$ & \texttt{low}, \texttt{moderate}, \texttt{high} \\
+ST Depression (\texttt{oldpeak}) & $[-10.0, 0.0, 1.5, 20.0]\text{ mm}$ & \texttt{none}, \texttt{mild}, \texttt{severe} \\
+\bottomrule
+\end{tabular}
+\label{tab:discretization}
+\end{table}
+
+The remaining categorical variables (\texttt{sex}, \texttt{cp}, \texttt{fbs}, \texttt{restecg}, \texttt{exang}, \texttt{slope}, \texttt{ca}, \texttt{thal}) are cast to standardized string states.
+
+\section{Bayesian Network Topology and Structural Assumptions}
+
+The structure of the Bayesian Network is formulated as a \textbf{Diagnostic Naive Bayes Directed Acyclic Graph (DAG)}. In this topology, the target condition \texttt{heart\_disease} serves as the root parent node directing outward edges to each of the 13 clinical finding nodes:
+\begin{equation}
+\mathcal{G} = \left( \mathcal{V}, \mathcal{E} \right), \quad \mathcal{E} = \{ (\text{heart\_disease}, X_i) \mid X_i \in \text{Features} \}
+\end{equation}
+
+\subsection{Causal Directionality and Structural Rationale}
+In clinical pathophysiology, disease states cause symptom manifestations and diagnostic test deviations, not vice versa. Coronary atherosclerosis causes diminished myocardial perfusion, leading to exertional angina (\texttt{exang}), ischemic ST depression (\texttt{oldpeak}), reduced maximum exercise heart rate (\texttt{thalch}), and fluoroscopic vessel calcification (\texttt{ca}). Structuring the target as the parent of the findings reflects this true underlying causal mechanism.
+
+\subsection{Conditional Independence Assumption}
+Given knowledge of the true pathological condition $D \in \{0, 1\}$, the observed clinical findings $X_1, X_2, \dots, X_n$ are assumed conditionally independent:
+\begin{equation}
+P(X_1, X_2, \dots, X_n \mid D) = \prod_{i=1}^n P(X_i \mid D)
+\end{equation}
+
+This assumption provides two critical operational advantages:
+\begin{itemize}
+\item \textbf{Mathematical Tractability:} It prevents combinatorial state explosion in the Conditional Probability Tables. Rather than requiring $2^{13} = 8,192$ joint probability cells, the model estimates only independent two-column tables $P(X_i \mid D)$ for each feature, ensuring stable, dense parameters even with 736 training instances.
+\item \textbf{Robustness Under Missing Data:} Under conditional independence, when an evidence variable $X_k$ is unobserved, it drops out of the likelihood quotient cleanly without requiring parameter marginalization over unobserved joint states.
+\end{itemize}
+
+\section{Parameter Learning via Discrete Maximum Likelihood Estimation}
+
+Parameters of the Conditional Probability Tables are estimated using Discrete Maximum Likelihood Estimation (MLE). For any state $x$ of evidence variable $X_i$ and disease state $d \in \{0, 1\}$:
+\begin{equation}
+P(X_i = x \mid D = d) = \frac{N(X_i = x, D = d)}{N(D = d)}
+\end{equation}
+where $N(X_i = x, D = d)$ represents the joint frequency count in the training split. Prior probabilities $P(D = 0) = 0.4470$ and $P(D = 1) = 0.5530$ are learned directly from training split class frequencies.
+
+All learned CPTs are validated using mathematical consistency checks $\sum_x P(X_i = x \mid D = d) = 1.0$ and exported to a versioned JSON repository at \texttt{models/cpt\_tables.json}.
+
+\section{Exact Inference via Variable Elimination}
+
+During prediction, patient evidence $E = \{ X_{e_1} = v_1, \dots, X_{e_k} = v_k \}$ is queried against the network. The posterior probability of coronary heart disease is computed by Bayes' Theorem:
+\begin{equation}
+P(D = 1 \mid E) = \frac{P(D = 1) \prod_{j=1}^k P(X_{e_j} = v_j \mid D = 1)}{\sum_{d \in \{0, 1\}} P(D = d) \prod_{j=1}^k P(X_{e_j} = v_j \mid D = d)}
+\end{equation}
+
+Any unobserved variable $X_u \notin E$ is summed out (marginalized) over its discrete domain $\mathcal{X}_u$:
+\begin{equation}
+P(D \mid E) \propto \sum_{x_u \in \mathcal{X}_u} P(D, E, X_u = x_u) = P(D, E)
+\end{equation}
+This allows clinicians to input anywhere from 1 to 13 diagnostic tests with full mathematical integrity.
+
+\section{Evaluation Metrics and Calibration Considerations}
+
+In medical diagnosis, overall classification accuracy is insufficient. A missed diagnosis of coronary disease (False Negative) can have catastrophic consequences for patient survival. Accordingly, the model is evaluated using a multi-dimensional metric framework:
+
+\begin{equation}
+\text{Sensitivity (Recall)} = \frac{TP}{TP + FN}, \qquad \text{Specificity} = \frac{TN}{TN + FP}
+\end{equation}
+\begin{equation}
+\text{Precision (PPV)} = \frac{TP}{TP + FP}, \qquad F_1\text{-score} = \frac{2 \times \text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
+\end{equation}
+
+Furthermore, to measure the fidelity of posterior probability outputs, the **Brier Score** is evaluated:
+\begin{equation}
+\text{Brier Score} = \frac{1}{N} \sum_{i=1}^N \left( \hat{p}_i - y_i \right)^2
+\end{equation}
+where $\hat{p}_i = P(D = 1 \mid E_i)$ and $y_i \in \{0, 1\}$. A lower Brier score denotes superior probability calibration.
+
+\section{Experiment Tracking with MLflow}
+
+All experimental runs, hyperparameters, training metrics, test metrics, and serialized artifacts are tracked in MLflow using an SQLite-backed registry (\texttt{sqlite:///mlruns/mlflow.db}). The tracking repository logs:
+\begin{itemize}
+\item Network parameters: number of nodes (14), directed edges (13), and estimator type (\texttt{DiscreteMLE}).
+\item Dataset provenance: raw file MD5 checksum and training/test row counts.
+\item Git commit SHA: for source-code traceability.
+\item Artifacts: \texttt{bayesian\_network.pkl}, \texttt{cpt\_tables.json}, \texttt{preprocessor.json}, \texttt{data\_snapshot.csv}, and all diagnostic evaluation plots.
+\end{itemize}
+
+%%********************Chapter 4**********
+\chapter{Results and Deployment}
+
+\section{Held-Out Test Performance}
+
+The trained Bayesian Network was evaluated on the held-out test split of 184 cases (102 disease-positive, 82 disease-negative) at the standard decision threshold of $0.50$. Table \ref{tab:test_performance} details the diagnostic metrics achieved.
+
+\begin{table}[!htbp]
+\centering
+\caption{Performance metrics on the held-out test partition ($N = 184$)}
+\begin{tabular}{lrr}
+\toprule
+\textbf{Diagnostic Metric} & \textbf{Value} & \textbf{Standard Clinical Target} \\
+\midrule
+Accuracy & \textbf{82.07\%} & $> 75.0\%$ \\
+Sensitivity (Recall) & \textbf{85.29\%} & $> 80.0\%$ \\
+Specificity & \textbf{78.05\%} & $> 75.0\%$ \\
+Precision (PPV) & \textbf{82.86\%} & $> 75.0\%$ \\
+$F_1$-Score & \textbf{84.06\%} & $> 80.0\%$ \\
+Area Under the ROC Curve (ROC-AUC) & \textbf{0.8914} & $> 0.800$ \\
+Brier Calibration Score & \textbf{0.1433} & $< 0.150$ \\
+Cross-Entropy Log-Loss & \textbf{0.4792} & $< 0.500$ \\
+\bottomrule
+\end{tabular}
+\label{tab:test_performance}
+\end{table}
+
+The model demonstrates balanced sensitivity (85.29\%) and specificity (78.05\%), ensuring strong disease detection while minimizing false positive alerts. The high ROC-AUC of 0.8914 confirms robust diagnostic discrimination across all operational decision thresholds.
+
+\safefig{roc_curve.png}{0.65}{Receiver Operating Characteristic (ROC) curve on the held-out test set ($\text{AUC} = 0.8914$)}{fig:roc}
+
+\section{Confusion Matrix Analysis}
+
+\begin{table}[!htbp]
+\centering
+\caption{Test set confusion matrix breakdown ($N = 184$)}
+\begin{tabular}{lcc}
+\toprule
+ & \textbf{Predicted No Disease ($0$)} & \textbf{Predicted Disease ($1$)} \\
+\midrule
+\textbf{Actual No Disease ($0$)} & 64 (True Negatives) & 18 (False Positives) \\
+\textbf{Actual Disease ($1$)} & 15 (False Negatives) & 87 (True Positives) \\
+\bottomrule
+\end{tabular}
+\label{tab:confusion}
+\end{table}
+
+\safefig{confusion_matrix.png}{0.65}{Confusion matrix on the held-out test set}{fig:confusion}
+
+As detailed in Table \ref{tab:confusion} and Figure \ref{fig:confusion}, the Bayesian Network correctly identifies 87 out of 102 diseased patients (85.3\% sensitivity) and rules out disease in 64 out of 82 healthy patients (78.0\% specificity), resulting in only 15 missed diagnoses across the test cohort.
+
+\section{Probability Calibration Analysis}
+
+\safefig{calibration_curve.png}{0.65}{Reliability diagram and calibration curve on test data ($\text{Brier} = 0.1433$)}{fig:calibration}
+
+Figure \ref{fig:calibration} illustrates the probability calibration curve (reliability diagram). In contrast to uncalibrated models whose predictions cluster at extreme confidences, the Bayesian Network curve closely tracks the ideal 45-degree diagonal. The low Brier score of 0.1433 confirms that when the network outputs a posterior probability of 80\%, approximately 80\% of patients in that risk category actually suffer from coronary heart disease.
+
+\section{Demographic Subgroup Fairness Audit}
+
+To verify equitable diagnostic performance across demographic subpopulations, stratified subgroup evaluations were conducted:
+\begin{itemize}
+\item \textbf{Sex Subgroups:} Male patients ($N = 149$) achieved an accuracy of 81.21\%, while female patients ($N = 35$) achieved an accuracy of 85.71\%.
+\item \textbf{Age Tiers:} Young patients ($<45$ years, $N = 41$) achieved 82.93\% accuracy; middle-aged patients (45--60 years, $N = 95$) achieved 82.11\% accuracy; senior patients ($>60$ years, $N = 48$) achieved 81.25\% accuracy.
+\end{itemize}
+The model exhibits consistent performance across all age groups and sexes without notable demographic disparity.
+
+\section{System Architecture}
+
+\safefig{mlops_architecture.png}{0.95}{End-to-end MLOps pipeline and deployment architecture}{fig:architecture}
+
+Figure \ref{fig:architecture} illustrates the two primary phases of the system architecture:
+\begin{enumerate}
+\item \textbf{Offline Model Engineering:} The raw UCI dataset is ingested, audited, discretized, and trained via \texttt{DiscreteMLE}. Serialized artifacts (\texttt{bayesian\_network.pkl}, \texttt{cpt\_tables.json}, \texttt{preprocessor.json}) and tracking metrics are logged in MLflow.
+\item \textbf{Online Application Deployment:} The saved artifacts are served via a FastAPI REST backend and rendered through an interactive Streamlit UI, fully containerised with Docker.
+\end{enumerate}
+
+\begin{table}[!htbp]
+\centering
+\caption{System technologies and their specific MLOps roles}
+\begin{tabular}{ll}
+\toprule
+\textbf{Technology} & \textbf{Role in Pipeline} \\
+\midrule
+Python 3.12 & Primary execution runtime \\
+pgmpy 1.1.2 & Discrete Bayesian Network modeling and Variable Elimination \\
+Pandas / NumPy & Data wrangling and array manipulation \\
+Scikit-learn 1.9 & Stratified train/test splitting and validation metrics \\
+MLflow 3.17 & Experiment tracking, artifact store, and parameter logging \\
+FastAPI 0.162 & High-throughput RESTful inference backend with Pydantic validation \\
+Streamlit 1.66 & Clinician interactive dashboard and risk visualization \\
+Docker \& Compose & Multi-service containerization and orchestration \\
+Git \& GitHub & Source-code version control (\texttt{diceyXD/heart}) \\
+\bottomrule
+\end{tabular}
+\label{tab:tech_stack}
+\end{table}
+
+\section{Streamlit Clinician Dashboard and Interface}
+
+The user interface is structured into four functional tabs, addressing clinical assessment, structural explainability, diagnostic evaluation, and MLOps governance.
+
+\safefig{ss1.png}{0.95}{Streamlit diagnostic inference interface displaying high-risk coronary prediction (98.12\%) and clinical guidance}{fig:ss1_pred_high}
+
+Figure \ref{fig:ss1_pred_high} depicts the primary diagnostic inference interface. The top banner prominently features the required regulatory medical disclaimer. In this illustrated case, a 55-year-old male presenting with asymptomatic chest pain, elevated resting blood pressure (135 mmHg), and exercise-induced angina is evaluated. The Bayesian Network computes an estimated heart disease probability of **98.12\%**, correctly assigning the patient to the **High / Critical Risk Tier** with an actionable clinical recommendation for prompt cardiovascular assessment.
+
+\safefig{ss2.png}{0.95}{Detailed patient diagnostic profile form and live JSON evidence structure (9/13 features observed)}{fig:ss2_evidence_json}
+
+Figure \ref{fig:ss2_evidence_json} shows the input profile form and the resulting evidence structure. The dashboard displays the exact active evidence dictionary (\texttt{age\_bin: middle}, \texttt{sex: Male}, \texttt{cp: asymptomatic}, \texttt{trestbps\_bin: elevated}, \texttt{chol\_bin: borderline}, \texttt{thalch\_bin: moderate}, \texttt{exang: True}, \texttt{oldpeak\_bin: mild}, \texttt{slope: flat}). Unobserved features are explicitly listed as marginalized out.
+
+\safefig{ss3.png}{0.95}{Diagnostic inference under mild/partial evidence for a young patient, predicting low/borderline risk (32.89\%)}{fig:ss3_pred_low}
+
+Figure \ref{fig:ss3_pred_low} demonstrates the system's capacity to perform inference under partial evidence. A 26-year-old male with normal blood pressure, normal cholesterol, and absence of exercise angina is evaluated. The network computes a posterior probability of **32.89\%**, classifying the case into the **Mild / Borderline Risk Tier** and predicting **No Heart Disease** (67.11\% confidence).
+
+\safefig{ss4.png}{0.95}{Model Performance, Validation and Calibration dashboard view displaying live metric cards and diagnostic plots}{fig:ss4_eval_tab}
+
+Figure \ref{fig:ss4_eval_tab} presents the evaluation and calibration dashboard tab. The clinician can directly inspect live summary metric cards (ROC-AUC: 0.8914, Accuracy: 82.07\%, Sensitivity: 85.29\%, Brier Score: 0.1433) alongside high-resolution interactive renderings of the Confusion Matrix, Calibration Curve, and ROC Curve.
+
+\safefig{ss5.png}{0.95}{MLOps Lifecycle, Audit Logs and Drift Monitoring view showing model metadata snapshot and live prediction telemetry}{fig:ss5_mlops_tab}
+
+Figure \ref{fig:ss5_mlops_tab} shows the MLOps governance tab. It displays the active model metadata snapshot, verifying the Git commit hash (\texttt{668ed4013a26...}), MLflow run ID (\texttt{2200f9eb55...}), and raw dataset MD5 checksum (\texttt{bde7772872...}). On the right, the live prediction audit stream is dynamically read from \texttt{logs/predictions.jsonl}, recording timestamps, observed evidence counts, estimated probabilities, and inference latencies.
+
+\section{Containerisation and Deployment}
+
+The application is containerised using Docker and Docker Compose. The configuration is defined in \texttt{Dockerfile} and \texttt{docker-compose.yml}, exposing the FastAPI service on port 8000 and the Streamlit UI on port 8501. The entire multi-service stack can be launched via:
+\begin{verbatim}
+docker-compose up --build
+\end{verbatim}
+Furthermore, the repository is structured with a root entrypoint \texttt{streamlit\_app.py} and root \texttt{requirements.txt}, enabling 1-click cloud hosting on Streamlit Community Cloud. The public source code is maintained at \url{https://github.com/diceyXD/heart}.
+
+\section{Operational Logging and Data Drift Monitoring Strategy}
+
+To support post-deployment governance, operational events are recorded without storing protected health information (PHI):
+\begin{itemize}
+\item \texttt{logs/api.log}: Records HTTP request methods, endpoints, response status codes, and latency in milliseconds.
+\item \texttt{logs/predictions.jsonl}: Stores non-sensitive prediction events (timestamps, feature counts, posterior probabilities, and assigned risk levels) for auditability.
+\item \texttt{logs/errors.log}: Captures unhandled exception traces.
+\end{itemize}
+
+\begin{table}[!htbp]
+\centering
+\caption{Data drift and model maintenance monitoring plan}
+\begin{tabular}{lll}
+\toprule
+\textbf{Monitoring Dimension} & \textbf{Detection Methodology} & \textbf{Maintenance Trigger Threshold} \\
+\midrule
+Covariate / Input Drift & Kolmogorov-Smirnov test (vitals) & $p < 0.05$ on 200 incoming cases vs \\
+ & and Chi-Square contingency (categoricals) & baseline \texttt{data\_snapshot.csv} \\
+Target Concept Drift & Rolling Brier Score \& Log-Loss & Rolling Brier score exceeds $0.200$ \\
+Service Health & P95 latency and HTTP 5xx error rate & Latency $> 150\text{ ms}$ or Error rate $> 1.0\%$ \\
+\bottomrule
+\end{tabular}
+\label{tab:monitoring_plan}
+\end{table}
+
+When drift thresholds are breached, the automated pipeline script \texttt{python src/train.py} is executed to re-estimate CPT parameters from updated cohorts.
+
+%%********************Chapter 5**********
+\chapter{Discussion \& Conclusion}
+
+\section{Summary of Work}
+
+This project has demonstrated the complete lifecycle of a probabilistic clinical machine learning application using Bayesian Networks and modern MLOps methodologies. By addressing multi-center missingness in the UCI Heart Disease dataset through leakage-free preprocessing and formulating a clinically grounded Diagnostic Naive Bayes network, the system achieves a strong test ROC-AUC of 0.8914, accuracy of 82.07\%, sensitivity of 85.29\%, and a Brier calibration score of 0.1433. The application is served via FastAPI, presented through an interactive Streamlit UI, tracked in MLflow, containerised in Docker, and monitored through operational logging.
+
+\section{Clinical Significance}
+
+The Bayesian Network approach provides distinct clinical advantages:
+\begin{itemize}
+\item **Flexibility Across Care Settings:** Community clinics lacking fluoroscopy or nuclear stress testing can enter basic demographic and vital data, while tertiary cardiac centers can incorporate advanced imaging findings. In both cases, exact mathematical inference calculates the posterior probability without artificial imputation.
+\item **Safety Through Calibration:** The high sensitivity (85.29\%) prioritizes patient safety by minimizing false negative diagnoses, while the low Brier score (0.1433) ensures that calculated probabilities reflect real-world disease incidence.
+\end{itemize}
+
+\section{Limitations}
+
+Despite its strengths, the system has several limitations:
+\begin{itemize}
+\item **Observational Registry Bias:** The historical UCI cohort predominantly features male patients (79\% in the Cleveland subset), which, although audited for fairness, necessitates broader validation across diverse contemporary populations.
+\item **Educational Prototype Status:** In compliance with healthcare software regulations (FDA / CE mark), this application is an educational prototype and must not be used as a standalone diagnostic instrument.
+\end{itemize}
+
+\section{Future Scope}
+
+Future extensions include:
+\begin{itemize}
+\item Transitioning from static Naive Bayes to Dynamic Bayesian Networks (DBNs) to model longitudinal disease progression over multiple patient visits.
+\item Incorporating continuous-node Bayesian Networks (Linear Gaussian models) to eliminate the need for fixed discretization cutoffs.
+\item Integrating automated CI/CD retraining workflows using GitHub Actions upon detected covariate drift.
+\end{itemize}
+
+\section{Conclusion}
+
+The project demonstrates that machine learning in healthcare must extend beyond offline metrics to address real-world uncertainty, missing evidence, transparency, and operational deployment. By uniting Bayesian graphical modeling with rigorous MLOps practices, the developed application provides a robust, interpretable, and reproducible framework for clinical probabilistic decision support.
+
+\appendix
+\chapter{FastAPI Endpoints and Test Verification}
+\label{appendix:api_testing}
+
+\section{API Health and Metadata Endpoints}
+The FastAPI backend exposes endpoints for service health verification and model provenance inspection:
+\begin{itemize}
+\item \texttt{GET /health}: Confirms engine status, system uptime, active model version (\texttt{1.0.0}), and current Git commit SHA.
+\item \texttt{GET /metadata}: Returns the 14 network nodes, 13 directed graph edges, training/test sample sizes, dataset MD5 checksum, and feature domains.
+\item \texttt{POST /predict}: Primary inference endpoint accepting arbitrary combinations of patient findings and returning calibrated probabilities, risk tiers, and unobserved variable lists.
+\item \texttt{POST /predict/batch}: Multi-patient batch inference endpoint.
+\end{itemize}
+
+\section{Automated Test Suite Verification}
+All core data pipelines, CPT mathematical constraints, inference engines, and API endpoints are tested using the automated test suite in \texttt{tests/test\_pipeline.py}:
+\begin{itemize}
+\item \texttt{test\_01\_raw\_data\_loading}: Verifies raw dataset integrity (920 records).
+\item \texttt{test\_02\_preprocessing\_and\_leakage\_prevention}: Confirms leakage-free train/test splitting (736 vs 184) and absence of null values.
+\item \texttt{test\_03\_cpt\_mathematical\_consistency}: Verifies that all learned CPT probability tables sum to 1.0.
+\item \texttt{test\_04\_inference\_full\_evidence}: Validates high-risk prediction for complete clinical profiles.
+\item \texttt{test\_05\_inference\_partial\_evidence\_marginalization}: Verifies that exact inference marginalizes out unobserved variables correctly.
+\item \texttt{test\_06\_fastapi\_endpoints}: Tests HTTP status codes and responses for \texttt{/health}, \texttt{/metadata}, and \texttt{/predict}.
+\item \texttt{test\_07\_fastapi\_validation\_error}: Verifies Pydantic schema validation error handling (HTTP 422).
+\end{itemize}
+All 7 unit and integration tests pass successfully in $0.18\text{ seconds}$.
+
+% References
+\begin{thebibliography}{99}
+\bibitem{pearl1988}
+J.~Pearl, \emph{Probabilistic Reasoning in Intelligent Systems: Networks of Plausible Inference}, Morgan Kaufmann, San Mateo, CA, 1988.
+
+\bibitem{detrano1989}
+R.~Detrano, A.~Janosi, W.~Steinbrunn, M.~Pfisterer, J.~Schmid, S.~Sandhu, K.~Guenther, F.~Vermeer, and V.~Froelicher, ``International application of a new probability algorithm for the diagnosis of coronary artery disease,'' \emph{The American Journal of Cardiology}, vol.~64, no.~5, pp.~304--310, 1989.
+
+\bibitem{ankan2015}
+A.~Ankan and A.~Panda, ``pgmpy: Probabilistic Graphical Models using Python,'' in \emph{Proceedings of the 14th Python in Science Conference (SciPy)}, pp.~6--11, 2015.
+
+\bibitem{brier1950}
+G.~W. Brier, ``Verification of forecasts expressed in terms of probability,'' \emph{Monthly Weather Review}, vol.~78, no.~1, pp.~1--3, 1950.
+
+\bibitem{niculescu2005}
+A.~Niculescu-Mizil and R.~Caruana, ``Predicting good probabilities with supervised learning,'' in \emph{Proceedings of the 22nd International Conference on Machine Learning (ICML)}, pp.~625--632, 2005.
+
+\bibitem{zaharia2018}
+M.~Zaharia, A.~Chen, A.~Davidson, A.~Ghodsi, S.~A. Hong, A.~Konwinski, E.~Murching, T.~Nykodym, P.~Ogawa, F.~Roussel \emph{et~al.}, ``Accelerating the machine learning lifecycle with MLflow,'' \emph{IEEE Data Engineering Bulletin}, vol.~41, no.~4, pp.~39--45, 2018.
+
+\bibitem{tiangolo2019}
+S.~Ram\'irez, ``FastAPI: Modern, fast (high-performance), web framework for building APIs with Python 3.8+,'' \emph{GitHub repository}, 2019. Available: \url{https://github.com/tiangolo/fastapi}.
+
+\bibitem{scikitlearn2011}
+F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel, M.~Blondel, P.~Prettenhofer, R.~Weiss, V.~Dubourg \emph{et~al.}, ``Scikit-learn: Machine learning in Python,'' \emph{Journal of Machine Learning Research}, vol.~12, pp.~2825--2830, 2011.
+
+\end{thebibliography}
+
+\end{document}

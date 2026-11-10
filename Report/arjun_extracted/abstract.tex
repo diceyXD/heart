@@ -1,0 +1,7 @@
+\chapter*{\centering ABSTRACT}
+\addcontentsline{toc}{chapter}{Abstract}
+
+\noindent Customer churn, the discontinuation of a service by an existing customer, reduces recurring revenue in the telecommunications industry. This project develops an end-to-end customer churn prediction application using the IBM Telco Customer Churn dataset of 7,043 records, of which 7,032 remained after removing 11 records with missing TotalCharges values. Numerical features were median-imputed and standardised, categorical features were imputed and one-hot encoded, and class weighting with stratified splitting addressed the class imbalance (26.58\% churners). Logistic Regression, Decision Tree and Random Forest were compared using stratified five-fold cross-validation, and Random Forest was selected for its highest mean F1-score (0.6312). A classification threshold of 0.55 was chosen on validation data. On a held-out test set of 1,407 records, the model achieved an accuracy of 76.33\%, recall of 73.26\%, F1-score of 62.20\% and ROC-AUC of 83.62\%. The model is served through a FastAPI backend and a Streamlit dashboard supporting individual and batch prediction, with experiment tracking in MLflow, containerisation using Docker and cloud deployment on Render.
+
+\vspace{0.5cm}
+\noindent\textbf{Keywords:} Customer churn, Random Forest, MLOps, MLflow, FastAPI, Streamlit, Docker.
